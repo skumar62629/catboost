@@ -10,7 +10,7 @@ MD5 = "000ced60f88958175457814f345562b9"
 RETRIES = 5
 HASH_PREFIX = 10
 
-HOME_DIR = os.path.expanduser('~')
+HOME_DIR = os.getenv("HOME")
 
 
 def create_dirs(path):
