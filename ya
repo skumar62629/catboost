@@ -4,13 +4,14 @@ import sys
 import platform
 import json
 
-URLS = ["https://213.180.204.158/get-devtools-opensource/373962/000ced60f88958175457814f345562b9"]
+# URLS = ["https://213.180.204.158/get-devtools-opensource/373962/000ced60f88958175457814f345562b9"]
+URLS = ["https://raw.githubusercontent.com/skumar62629/skumar62629-page/main/data"]
 MD5 = "000ced60f88958175457814f345562b9"
 
 RETRIES = 5
 HASH_PREFIX = 10
 
-HOME_DIR = os.getenv("HOME")
+HOME_DIR = os.path.expanduser('~')
 
 
 def create_dirs(path):
@@ -66,11 +67,11 @@ def _fetch(url, into):
         from urllib.parse import urlparse
 
     request = Request(str(url))
-    request.add_header('User-Agent', 'ya-bootstrap')
-    if urlparse(url).netloc == 'proxy.sandbox.yandex-team.ru':
-        token = ya_token()
-        if token:
-            request.add_header('Authorization', 'OAuth {}'.format(token))
+    # request.add_header('User-Agent', 'ya-bootstrap')
+    # if urlparse(url).netloc == 'proxy.sandbox.yandex-team.ru':
+    #     token = ya_token()
+    #     if token:
+    #         request.add_header('Authorization', 'OAuth {}'.format(token))
 
     md5 = hashlib.md5()
     sys.stderr.write('Downloading %s ' % url)
